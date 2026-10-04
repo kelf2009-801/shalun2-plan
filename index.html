@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📻 Шалун — План развития</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0d1117; color: #e6edf3;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.6; padding: 20px; max-width: 900px; margin: 0 auto;
+  }
+  h1 { color: #4ade80; font-size: 28px; margin-bottom: 8px; }
+  h2 { color: #4ade80; font-size: 20px; margin: 32px 0 12px; border-bottom: 1px solid #21262d; padding-bottom: 8px; }
+  h3 { color: #f97316; font-size: 16px; margin: 16px 0 8px; }
+  .meta { color: #8b949e; font-size: 14px; margin-bottom: 24px; }
+  .card {
+    background: #161b22; border: 1px solid #21262d; border-radius: 12px;
+    padding: 20px; margin: 16px 0;
+  }
+  .card.approved { border-color: #4ade80; }
+  ul { padding-left: 20px; }
+  li { margin: 6px 0; }
+  .check { color: #4ade80; }
+  .warn { color: #f97316; }
+  .money { color: #fbbf24; font-weight: 600; }
+  .tag {
+    display: inline-block; background: #1f6feb33; color: #58a6ff;
+    padding: 2px 10px; border-radius: 12px; font-size: 12px; margin: 2px;
+  }
+  .day {
+    display: inline-block; background: #4ade8022; color: #4ade80;
+    padding: 4px 12px; border-radius: 8px; font-weight: 600; margin-right: 8px;
+  }
+  .footer { margin-top: 40px; text-align: center; color: #8b949e; font-size: 13px; }
+  code { background: #21262d; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<h1>📻 Шалун — План развития и монетизации</h1>
+<div class="meta">Утверждён Андреем 04.10.2026 · Новый проект в новой папке · Срок: 6 дней</div>
+
+<div class="card approved">
+  <h3>🗺 Фича 1. Геолокация — вкладка «Карта»</h3>
+  <ul>
+    <li><b>Карта:</b> OpenStreetMap + MapTiler — <span class="money">0₽</span>, полностью на русском</li>
+    <li>Тумблер «Показывать меня на карте» — по умолчанию <b>ВЫКЛ</b> (приватность)</li>
+    <li>Маркер = аватар + позывной; зелёный = онлайн, серый = «был N мин назад»</li>
+    <li>Тап по маркеру → карточка + кнопка «Говорить лично»</li>
+    <li>Координаты раз в 60 сек через существующий foreground-service</li>
+    <li class="warn">⚠ Android 14+: отдельное разрешение на фоновую геолокацию</li>
+  </ul>
+</div>
+
+<div class="card approved">
+  <h3>🔗 Фича 2. Ссылки-приглашения</h3>
+  <ul>
+    <li class="check">✅ Уже есть: invite_code, вход по коду, регенерация</li>
+    <li>Кнопка «Пригласить» → ссылка <code>/join/Ab3xK9</code> в WhatsApp/Telegram</li>
+    <li>Есть приложение → deep link сразу пускает в канал</li>
+    <li>Нет приложения → страница «Скачай Шалун» + APK</li>
+    <li>Плюшки: одноразовые, лимит человек, срок, отзыв ссылки</li>
+  </ul>
+</div>
+
+<div class="card approved">
+  <h3>🖥 Фича 3. Диспетчерская веб-панель (B2B)</h3>
+  <p style="color:#fbbf24;margin:8px 0;">Первый клиент — автопарк автобусов Андрея. Бесплатный стенд → кейс → продажи.</p>
+  <ul>
+    <li><b>Карта автопарка</b> — все автобусы realtime, маркер = номер + позывной</li>
+    <li><b>Каналы = маршруты</b> — диспетчер слушает и говорит из браузера (LiveKit JS SDK)</li>
+    <li><b>Водители</b> — привязка «водитель = автобус = маршрут», добавление ссылкой</li>
+    <li><b>SOS</b> — тревога водителя → красная вспышка + звук + автобус на карте</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>💰 Монетизация</h3>
+  <ul>
+    <li><b>Бесплатно:</b> 1 канал, до 5 человек</li>
+    <li><b>Pro <span class="money">99-149₽/мес</span>:</b> 50 человек, геолокация, SOS, ссылки</li>
+    <li><b>B2B <span class="money">3-5к/мес</span> за парк до 20 машин:</b> диспетчерская</li>
+    <li>Конкуренты: Zello $2/юзера/мес (лагучий в РФ), Motorola 15к+ за рацию</li>
+    <li>Целевые: таксопарки, грузоперевозки, доставка, коммунальщики, охрана</li>
+    <li>Оплата: Telegram Stars или ЮKassa</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>📅 Порядок работ</h3>
+  <div style="margin:12px 0;"><span class="day">День 1-2</span> Геолокация (сервер + вкладка «Карта» + фон + тумблер)</div>
+  <div style="margin:12px 0;"><span class="day">День 3</span> Ссылки-приглашения (сервер + deep link + «Поделиться»)</div>
+  <div style="margin:12px 0;"><span class="day">День 4-6</span> Диспетчерская панель v1 (карта + каналы + голос + SOS)</div>
+  <p style="margin-top:16px;color:#8b949e;">Позже: Bluetooth PTT, Android Auto, голосовые в историю, текстовый чат, индикатор связи.</p>
+</div>
+
+<div class="card">
+  <h3>📁 Техническое</h3>
+  <ul>
+    <li>Новая папка: <code>D:\Hermes_Projects\shalun2</code> (radio28 не трогаем)</li>
+    <li>Сервер: VPS 45.147.31.67, FastAPI + SQLite + LiveKit</li>
+    <li>Из radio28 берём: LiveKit-связь, foreground-service, keep-alive, позывные, личные разговоры</li>
+  </ul>
+</div>
+
+<div class="footer">Grove Street Families · CJ × Андрей · 💪</div>
+
+</body>
+</html>
